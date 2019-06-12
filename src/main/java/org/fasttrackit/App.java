@@ -1,6 +1,7 @@
 package org.fasttrackit;
 
-public class App 
+
+public class App
 {
     public static void main( String[] args )
     {
@@ -40,8 +41,6 @@ public class App
 
       System.out.println(car2.name + " " + car2.engine.manufacturer);
 
-
-;
 
 
 
