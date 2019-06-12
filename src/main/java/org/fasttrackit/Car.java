@@ -10,5 +10,5 @@ public class Car extends AutoVehicle {
     LocalDate createdDate;
 
 
-    }
+}
 

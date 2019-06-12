@@ -15,21 +15,21 @@ public class Vehicle {
 
     public double accelerate(double speed, double durationInHours) {
 
-        System.out.println(name+ " is accelerating with " + speed + " km/h for " + durationInHours + "h.");
+        System.out.println(name + " is accelerating with " + speed + " km/h for " + durationInHours + "h.");
 
-            double distance = speed * durationInHours;
+        double distance = speed * durationInHours;
 
         System.out.println("Traveled " + distance + " km.");
 
-            traveledDistance +=  distance;
+        traveledDistance += distance;
 
         System.out.println("Total traveled distance " + traveledDistance + " km");
 
-            double spentFuel = distance/100  * mileage;
+        double spentFuel = distance / 100 * mileage;
 
-        System.out.println("spent Fuel: " + spentFuel + "1." );
+        System.out.println("spent Fuel: " + spentFuel + "1.");
 
-         fuelLevel -= spentFuel;
+        fuelLevel -= spentFuel;
 
         System.out.println("Remaining fuel: " + fuelLevel + "1.");
 
