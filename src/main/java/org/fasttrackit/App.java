@@ -11,7 +11,10 @@ public class App
       car.doorCount = 4;
       car.running = true;
       car.maxSpeed = 120 ;
-      car.mileage = 9.5 ;
+      car.fuelLevel =50;
+      car.mileage = 8 ;
+      double distance =car.accelerate(60,0.5);
+      System.out.println("Distance in App.main " + distance + " km.");
 
       Engine engine1 = new Engine();
       engine1.capacity = 120;
@@ -28,7 +31,7 @@ public class App
 
 
       Car car3 = car;
-        System.out.println(car.name);
+      /**  System.out.println(car.name);
         System.out.println(car3.name);
 
       System.out.println("changing values...");
@@ -40,9 +43,6 @@ public class App
       System.out.println(car.maxSpeed);
 
       System.out.println(car2.name + " " + car2.engine.manufacturer);
-
-
-
-
+    **/
     }
 }
