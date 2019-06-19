@@ -13,6 +13,8 @@ public class Vehicle {
     double traveledDistance;
     LocalDate createdDate;
 
+
+
     public double accelerate(double speed, double durationInHours) {
 
         System.out.println(name + " is accelerating with " + speed + " km/h for " + durationInHours + "h.");
