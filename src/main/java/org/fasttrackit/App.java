@@ -30,22 +30,33 @@ public class App {
         car2.setRunning(false);
 
 
-
         Car car3 = car;
         System.out.println(car.getName());
 
 
         System.out.println("changing values...");
-        car.setName("Dacia Logan");
+        //car.setName("Dacia Logan");
 
         System.out.println(car.getName());
 
 
         System.out.println("max speed: " + car.getMaxSpeed());
 
-        System.out.println( "Engine manufacturer: " + car.engine.manufacturer);
+        System.out.println("Engine manufacturer: " + car.engine.manufacturer);
 
         double distance = car.accelerate(60, 0.5);
+
+        System.out.println("Studying static variables...");
+
+//        car.totalCount=1;
+//        System.out.println("total count of cars: " + car.totalCount);
+//        car2.totalCount=2;
+//        System.out.println("total count of cars: " + car.totalCount);
+//        System.out.println("total count of cars: " + car2.totalCount);
+//        System.out.println("total count from Vehicle class: " + Vehicle.totalCount);
+
+        System.out.println(Vehicle.getTotalCount());
+
 
     }
 }

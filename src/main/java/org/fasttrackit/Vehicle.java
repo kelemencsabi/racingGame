@@ -4,14 +4,25 @@ import java.time.LocalDate;
 
 public class Vehicle {
 
- private String name;
- private double mileage;
- private String color;
- private double maxSpeed;
- private boolean running;
- private double fuelLevel;
- private double traveledDistance;
- private LocalDate createdDate;
+    public static int getTotalCount() {
+        return totalCount;
+    }
+
+    private static int totalCount = 0;
+
+    public Vehicle() {
+        totalCount++;
+    }
+
+
+    private String name;
+    private double mileage;
+    private String color;
+    private double maxSpeed;
+    private boolean running;
+    private double fuelLevel;
+    private double traveledDistance;
+    private LocalDate createdDate;
 
     public void setName(String name) {
         this.name = name.trim();
@@ -100,12 +111,6 @@ public class Vehicle {
         return distance;
     }
 }
-
-
-
-
-
-
 
 
 
