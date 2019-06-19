@@ -9,6 +9,10 @@ public class Car extends AutoVehicle {
         super(engine);
     }
 
+
+    public Car() {
+        super(new Engine());
+    }
     int doorCount;
 
     LocalDate createdDate;
