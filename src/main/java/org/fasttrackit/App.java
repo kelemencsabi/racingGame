@@ -4,6 +4,8 @@ package org.fasttrackit;
 public class App {
     public static void main(String[] args) {
 
+        new AutoVehicle();
+
         Engine engine1 = new Engine();
         engine1.capacity = 100;
         engine1.manufacturer = "Renault";
@@ -56,6 +58,8 @@ public class App {
 //        System.out.println("total count from Vehicle class: " + Vehicle.totalCount);
 
         System.out.println(Vehicle.getTotalCount());
+
+        car2.accelerate(100);
 
 
     }
