@@ -31,6 +31,15 @@ public class App {
         car2.setFuelLevel(60);
         car2.setRunning(false);
 
+        BatMobile batMobile = new BatMobile();
+        batMobile.setName("Batman");
+
+        batMobile.accelerate(60,1);
+        car.accelerate(60,1);
+        batMobile.accelerate(60);
+
+
+
 
         Car car3 = car;
         System.out.println(car.getName());
@@ -60,6 +69,10 @@ public class App {
         System.out.println(Vehicle.getTotalCount());
 
         car2.accelerate(100);
+
+        System.out.println("Today...");
+
+        System.out.println(car.toString());
 
 
     }

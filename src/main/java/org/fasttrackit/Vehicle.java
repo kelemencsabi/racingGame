@@ -111,11 +111,34 @@ public class Vehicle {
         return distance;
 
     }
-    public double accelerate(double speed){
-        return accelerate(speed,1);
+
+    public double accelerate(double speed) {
+        return accelerate(speed, 1);
 
     }
+
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "name='" + name + '\'' +
+                ", mileage=" + mileage +
+                ", color='" + color + '\'' +
+                ", maxSpeed=" + maxSpeed +
+                ", running=" + running +
+                ", fuelLevel=" + fuelLevel +
+                ", traveledDistance=" + traveledDistance +
+                ", createdDate=" + createdDate +
+                '}';
+    }
+    // method signature must be the same , except :
+    // co-variant return type(returned object must inherit what the overridden method was returning;
+    //overriding method can allow larger access than was allowed in the super-class
+    @Override
+    public Vehicle clone() throws CloneNotSupportedException {
+        return new Vehicle();
+    }
 }
+
 
 
 
