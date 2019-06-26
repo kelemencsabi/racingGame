@@ -16,6 +16,14 @@ public class Car extends AutoVehicle {
     int doorCount;
 
     LocalDate createdDate;
+
+    public int getDoorCount() {
+        return doorCount;
+    }
+
+    public void setDoorCount(int doorCount) {
+        this.doorCount = doorCount;
+    }
 }
 
 
