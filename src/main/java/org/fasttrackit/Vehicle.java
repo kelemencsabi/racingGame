@@ -4,6 +4,15 @@ import java.time.LocalDate;
 
 public class Vehicle {
 
+    private String name;
+    private double mileage;
+    private String color;
+    private double maxSpeed;
+    private boolean running;
+    private double fuelLevel;
+    private double traveledDistance;
+    private LocalDate createdDate;
+
     public static int getTotalCount() {
         return totalCount;
     }
@@ -15,14 +24,65 @@ public class Vehicle {
     }
 
 
-    private String name;
-    private double mileage;
-    private String color;
-    private double maxSpeed;
-    private boolean running;
-    private double fuelLevel;
-    private double traveledDistance;
-    private LocalDate createdDate;
+    public double accelerate(double speed, double durationInHours) {
+        if(fuelLevel <= 0){
+            System.out.println("you dont have enough fuel to accelerate . Fuel level: " + fuelLevel);
+            return 0;
+        }
+
+        if(speed > maxSpeed){
+            System.out.println("Requested speed is too high. Maximum allowed: " + maxSpeed);
+            return 0;
+        }
+        System.out.println(name + " is accelerating with " + speed + " km/h for " + durationInHours + "h.");
+
+        double distance = speed * durationInHours;
+
+        System.out.println("Traveled " + distance + " km.");
+
+        traveledDistance += distance;
+
+        System.out.println("Total traveled distance " + traveledDistance + " km");
+
+        double spentFuel = distance / 100 * mileage;
+
+        System.out.println("spent Fuel: " + spentFuel + "1.");
+
+        fuelLevel -= spentFuel;
+
+        System.out.println("Remaining fuel: " + fuelLevel + "1.");
+
+        return distance;
+
+    }
+    //method overloading
+    public double accelerate(double speed) {
+        return accelerate(speed, 1);
+
+    }
+
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "name='" + name + '\'' +
+                ", mileage=" + mileage +
+                ", color='" + color + '\'' +
+                ", maxSpeed=" + maxSpeed +
+                ", running=" + running +
+                ", fuelLevel=" + fuelLevel +
+                ", traveledDistance=" + traveledDistance +
+                ", createdDate=" + createdDate +
+                '}';
+    }
+
+    // method signature must be the same , except :
+    // co-variant return type(returned object must inherit what the overridden method was returning;
+    //overriding method can allow larger access than was allowed in the super-class
+    @Override
+    public Vehicle clone() throws CloneNotSupportedException {
+        return new Vehicle();
+    }
+
 
     public void setName(String name) {
         this.name = name.trim();
@@ -86,56 +146,6 @@ public class Vehicle {
 
     public LocalDate getCreatedDate() {
         return createdDate;
-    }
-
-    public double accelerate(double speed, double durationInHours) {
-
-        System.out.println(name + " is accelerating with " + speed + " km/h for " + durationInHours + "h.");
-
-        double distance = speed * durationInHours;
-
-        System.out.println("Traveled " + distance + " km.");
-
-        traveledDistance += distance;
-
-        System.out.println("Total traveled distance " + traveledDistance + " km");
-
-        double spentFuel = distance / 100 * mileage;
-
-        System.out.println("spent Fuel: " + spentFuel + "1.");
-
-        fuelLevel -= spentFuel;
-
-        System.out.println("Remaining fuel: " + fuelLevel + "1.");
-
-        return distance;
-
-    }
-
-    public double accelerate(double speed) {
-        return accelerate(speed, 1);
-
-    }
-
-    @Override
-    public String toString() {
-        return "Vehicle{" +
-                "name='" + name + '\'' +
-                ", mileage=" + mileage +
-                ", color='" + color + '\'' +
-                ", maxSpeed=" + maxSpeed +
-                ", running=" + running +
-                ", fuelLevel=" + fuelLevel +
-                ", traveledDistance=" + traveledDistance +
-                ", createdDate=" + createdDate +
-                '}';
-    }
-    // method signature must be the same , except :
-    // co-variant return type(returned object must inherit what the overridden method was returning;
-    //overriding method can allow larger access than was allowed in the super-class
-    @Override
-    public Vehicle clone() throws CloneNotSupportedException {
-        return new Vehicle();
     }
 
 
