@@ -2,9 +2,28 @@ package org.fasttrackit;
 
 
 public class App {
+
+
     public static void main(String[] args) {
-        Game game =new Game();
+        Game game = new Game();
         game.start();
+        //String pool
+//        String a = "test";
+//        String b = "test";
+//        String c = new String("test");
+//
+//        if (a.equals(c)) {
+//            System.out.println(1);
+//        }
+//        System.out.println(a == c);
+//        Vehicle vehicle1 = new Vehicle();
+//        vehicle1.setName("Dacia");
+//        Vehicle vehicle2 = new Vehicle();
+//        vehicle2.setName("Dacia");
+//
+//
+//        System.out.println(vehicle1 == vehicle2);
+//        System.out.println(vehicle1.equals(vehicle2));
 
 
 
