@@ -1,6 +1,7 @@
 package org.fasttrackit;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import java.text.DecimalFormat;
@@ -14,11 +15,10 @@ public class Game {
     private Track[] tracks = new Track[3];
     private List<Vehicle> competitors = new ArrayList<>();
 
-    public void start() {
+    public void start() throws Exception {
         initializeTracks();
         displayTracks();
-        System.out.println("enter competitor count ");
-        int competitorCount =input.nextInt();
+        int competitorCount =getCompetitorCountFromUser();
         for(int i=0;i<competitorCount;i++){
             addCompetitor();
         }
@@ -47,6 +47,18 @@ public class Game {
                 System.out.println("-mileage:" + df2.format(competitors.get(i).getMileage()));
 
             }
+        }
+    }
+
+    private int getCompetitorCountFromUser() throws Exception {
+        System.out.println("please enter vehicle count:");
+        try {
+            return input.nextInt();
+        } catch (InputMismatchException e){
+            throw new Exception("you entered an invalid value");
+        }finally {
+            //finally block is always executed
+            System.out.println("Read input from user");
         }
     }
 
