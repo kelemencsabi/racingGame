@@ -10,7 +10,8 @@ import java.util.Scanner;
 public class Game {
 
     Scanner input = new Scanner(System.in);
-    DecimalFormat df2 =new DecimalFormat("#.##");
+    DecimalFormat df2 = new DecimalFormat("#.##");
+
 
     private Track[] tracks = new Track[3];
     private List<Vehicle> competitors = new ArrayList<>();
@@ -18,11 +19,54 @@ public class Game {
     public void start() throws Exception {
         initializeTracks();
         displayTracks();
-        int competitorCount =getCompetitorCountFromUser();
-        for(int i=0;i<competitorCount;i++){
+        Track selectedTrack = getTrackSelectedByUser();
+        int competitorCount = getCompetitorCountFromUser();
+        for (int i = 0; i < competitorCount; i++) {
             addCompetitor();
         }
         displayCompetitors();
+        boolean winnerNotKnown = true;
+        int competitorsWithoutFuel=0;
+
+        while (winnerNotKnown || competitorsWithoutFuel<competitors.size()) {
+            for (Vehicle competitor : competitors) {
+                double speed = getSpeedFromUser();
+                competitor.accelerate(speed);
+
+                if (competitor.getTraveledDistance() >= selectedTrack.getLength()) {
+                    System.out.println("Congrats! The winner is : " + competitor.getName());
+                    winnerNotKnown=false;
+                }
+
+            }
+        }
+    }
+
+    private double getSpeedFromUser() {
+        System.out.println("Please enter acceleration speed");
+        Scanner scanner = new Scanner(System.in);
+        try {
+            return scanner.nextDouble();
+        } catch (InputMismatchException e) {
+            System.out.println("You have entered an invalid value");
+            return getSpeedFromUser();
+        }
+    }
+
+
+    private Track getTrackSelectedByUser() {
+        System.out.println("Please enter track number:");
+        try {
+            Scanner input = new Scanner(System.in);
+            int trackNumber = input.nextInt();
+            Track track = tracks[trackNumber - 1];
+            System.out.println("Selected track:" + track.getName());
+            return track;
+        } catch (InputMismatchException | ArrayIndexOutOfBoundsException e) {
+            System.out.println("You entered an invaid track number. Please try again...");
+            //recursion - a method invoking itself
+            return getTrackSelectedByUser();
+        }
     }
 
     private void addCompetitor() {
@@ -54,9 +98,9 @@ public class Game {
         System.out.println("please enter vehicle count:");
         try {
             return input.nextInt();
-        } catch (InputMismatchException e){
+        } catch (InputMismatchException e) {
             throw new Exception("you entered an invalid value");
-        }finally {
+        } finally {
             //finally block is always executed
             System.out.println("Read input from user");
         }
@@ -82,4 +126,5 @@ public class Game {
                 System.out.println((i + 1) + " " + tracks[i].getName());
         }
     }
+
 }
